@@ -3,6 +3,6 @@
 # create a config file for ld which points to our mounted nvidia driver directory in `/usr/local/nvidia`
 # https://blog.sourced.tech/post/cuda_ldconfig/
 
-echo "/usr/local/nvidia" > /etc/ld.so.conf/cuda.conf
+echo "/usr/local/nvidia/lib" > /etc/ld.so.conf.d/cuda.conf
 
 ldconfig
