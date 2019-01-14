@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+# Download and install additional plugins for plex
+
+
+# Trakt Scrobbler
+
+
+if [ ! -d "/config/Library/Application Support/Plex Media Server/Plug-ins/Trakttv.bundle" ]; then
+    curl -L -o  Plex-Trakt-Scrobbler.zip https://github.com/trakt/Plex-Trakt-Scrobbler/archive/master.tar.gz
+    tar -xvf Plex-Trakt-Scrobbler.zip
+
+    cp -r Plex-Trakt-Scrobbler-*/Trakttv.bundle "/config/Library/Application Support/Plex Media Server/Plug-ins/"
+    # todo, restart Plex after this.
+fi
