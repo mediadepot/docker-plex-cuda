@@ -5,6 +5,7 @@ linuxserver/docker-plex modified to add support for NVidia decoding + additional
 
 ```
 docker run \
+-d \
 --name=plex \
 --net=host \
 --privileged \
