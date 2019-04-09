@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bash
+
+# fix for
+# - EAE timeout! EAE not running, or wrong folder? Could not read '/tmp/
+# - Error while decoding stream #0:1: Input/output error
+#
+# See the following links for more info:
+# https://forums.plex.tv/t/eae-timeout-eae-not-running-or-wrong-folder/374777
+# https://forums.plex.tv/t/there-was-a-problem-playing-this-item/186725/10
+# https://forums.plex.tv/t/plex-and-roku-ultra-eae-timeout-eae-not-running-or-wrong-folder-only-for-7-1-dd/379495/7
+
+sysctl fs.inotify.max_user_watches=100000
