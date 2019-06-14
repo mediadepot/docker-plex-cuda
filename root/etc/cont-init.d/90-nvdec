@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bash
+
+
+# Download and install Plex transcode wrapper script, with support for Nvidia Hardware Decoding (Encoding support already enabled)
+# See these links for more information:
+# - https://github.com/revr3nd/plex-nvdec/
+# - https://forums.plex.tv/t/hardware-accelerated-decode-nvidia-for-linux/233510/402
+# - https://forums.plex.tv/t/support-nvidia-transcode-engines-nvenc-nvdec/350219/3
+
+if [ ! -d "/config/plex-nvdec-master" ]; then
+
+    cd /config/
+    curl -L -o  plex-nvdec.tar.gz https://github.com/revr3nd/plex-nvdec/archive/master.tar.gz
+    tar -xvf plex-nvdec.tar.gz
+
+    cd /config/plex-nvdec-master
+    chmod +x plex-nvdec-patch.sh
+    ./plex-nvdec-patch.sh
+
+    rm -f /config/plex-nvdec.tar.gz
+fi
