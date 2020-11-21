@@ -4,12 +4,18 @@
 
 
 # Trakt Scrobbler
-
-
 if [ ! -d "/config/Library/Application Support/Plex Media Server/Plug-ins/Trakttv.bundle" ]; then
     curl -L -o  Plex-Trakt-Scrobbler.zip https://github.com/trakt/Plex-Trakt-Scrobbler/archive/master.tar.gz
     tar -xvf Plex-Trakt-Scrobbler.zip
 
     cp -r Plex-Trakt-Scrobbler-*/Trakttv.bundle "/config/Library/Application Support/Plex Media Server/Plug-ins/"
-    # todo, restart Plex after this.
 fi
+
+# Webtools - Unofficial App Store
+if [ ! -d "/config/Library/Application Support/Plex Media Server/Plug-ins/WebTools.bundle" ]; then
+    curl -L -o WebTools.bundle.zip https://github.com/ukdtom/WebTools.bundle/releases/download/3.0.0/WebTools.bundle.zip
+    unzip WebTools.bundle.zip -d "/config/Library/Application Support/Plex Media Server/Plug-ins/"
+    rm -rf WebTools.bundle.zip
+fi
+
+# todo, restart Plex after this.
