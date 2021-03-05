@@ -1,0 +1,31 @@
+name: Build Docker Image
+# This workflow is triggered on a schedule and can also be triggered manually
+on:
+  push:
+    branches:
+      - 'master'
+  workflow_dispatch:
+    inputs:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    env:
+      DOCKER_IMAGE_NAME: 'mediadepot/plex-cuda'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download and Build Docker Image
+        run: |
+          echo "=========================== Build Docker Image ==========================="
+          docker build \
+            --tag ghcr.io/${DOCKER_IMAGE_NAME}:latest \
+            --label "org.opencontainers.image.source=https://github.com/${GITHUB_REPOSITORY}" \
+            .
+
+          echo "=========================== Push Images ==========================="
+          echo ${{ secrets.USER_GITHUB_TOKEN }} | docker login ghcr.io -u="analogj" --password-stdin
+          docker push ghcr.io/${DOCKER_IMAGE_NAME}:latest
