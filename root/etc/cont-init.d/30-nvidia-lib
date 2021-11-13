@@ -5,4 +5,7 @@
 
 echo "/usr/local/nvidia/lib" > /etc/ld.so.conf.d/cuda.conf
 
+# https://forums.plex.tv/t/hardware-transcoding-stopped-working-gentoo-linux-solved/719595/29
+echo "/usr/local/nvidia/lib" >> /usr/lib/plexmediaserver/etc/ld-musl-x86_64.path
+
 ldconfig
