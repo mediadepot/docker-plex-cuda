@@ -26,6 +26,13 @@ jobs:
             --label "org.opencontainers.image.source=https://github.com/${GITHUB_REPOSITORY}" \
             .
 
+          docker build \
+            -f Dockerfile.wrap
+            --tag ghcr.io/${DOCKER_IMAGE_NAME}:wrap \
+            --label "org.opencontainers.image.source=https://github.com/${GITHUB_REPOSITORY}" \
+            .
+
           echo "=========================== Push Images ==========================="
           echo ${{ secrets.USER_GITHUB_TOKEN }} | docker login ghcr.io -u="analogj" --password-stdin
           docker push ghcr.io/${DOCKER_IMAGE_NAME}:latest
+          docker push ghcr.io/${DOCKER_IMAGE_NAME}:wrap
