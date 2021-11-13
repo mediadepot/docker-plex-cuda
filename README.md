@@ -22,5 +22,5 @@ docker run \
 --device /dev/nvidia0 \
 --label traefik.enable=true \
 --label traefik.port=32400 \
-mediadepot/plex-cuda
+ghcr.io/mediadepot/plex-cuda
 ```
