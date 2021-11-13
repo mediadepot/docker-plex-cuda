@@ -30,7 +30,7 @@ jobs:
             .
 
           docker build \
-            -f Dockerfile.wrap
+            -f Dockerfile.wrap \
             --tag ghcr.io/${DOCKER_IMAGE_NAME}:wrap \
             --label "org.opencontainers.image.source=https://github.com/${GITHUB_REPOSITORY}" \
             .
