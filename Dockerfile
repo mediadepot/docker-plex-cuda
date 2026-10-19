@@ -1,4 +1,4 @@
-FROM linuxserver/plex
+FROM lscr.io/linuxserver/plex:latest
 
 # CUDA SETUP
 
